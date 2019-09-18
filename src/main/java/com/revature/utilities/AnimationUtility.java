@@ -7,10 +7,15 @@ public class AnimationUtility {
 	
 	static public int animationToggle = 1;
 	
-	//Letter-by-letter animation
+	/**
+	 * Letter-by-letter animation
+	 * 
+	 * @param s for the string to output
+	 * @param milliseconds for the time to hold on each character
+	 * @param acceleration for how much to speed up
+	 * 			(or speed down) for each additional character
+	 */
 	public static void typingByLetter(String s, int milliseconds, int acceleration) {
-//		milliseconds = 0;
-//		acceleration = 0;
 		char[] banner = new char[s.length()];
 		for(int i = 0; i<s.length(); i++) {
 			banner[i] = s.charAt(i);
@@ -26,10 +31,14 @@ public class AnimationUtility {
 		}
 	}
 	
-	//Word-by-word
+	/**
+	 * Word-by-word animation: same as letter by letter
+	 * 							except it goes word-by-word
+	 * @param s
+	 * @param milliseconds
+	 * @param acceleration
+	 */
 	public static void typingByWord(String s, int milliseconds, int acceleration) {
-//		milliseconds = 0;
-//		acceleration = 0;
 		String[] banner = s.split(" ");
 		for(String b : banner) {
 			int i = 0;
@@ -45,10 +54,14 @@ public class AnimationUtility {
 		System.out.println();
 	}
 	
-	//Custom Splitter : splits between the @
+	/**
+	 * Custom animation cutter
+	 * 				pauses between the @ symbol
+	 * @param s
+	 * @param milliseconds
+	 * @param acceleration
+	 */
 	public static void typingCustomSplitter(String s, int milliseconds, int acceleration) {
-//		milliseconds = 0;
-//		acceleration = 0;
 		String[] banner = s.split("@");
 		for(String b : banner) {
 			int i = 0;
@@ -63,5 +76,4 @@ public class AnimationUtility {
 		}
 		System.out.println();
 	}
-
 }

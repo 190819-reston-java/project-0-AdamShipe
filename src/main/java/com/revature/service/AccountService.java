@@ -40,9 +40,6 @@ public class AccountService {
 		if (d <= 0) {
 			throw new NegativeTransactionException();
 		} else {
-//			if(d>selectedAccount.getBalance()) {
-//				throw new BalanceLimitException("INSUFFICIENT FUNDS");
-//			} else {
 			double currentBalance = selectedAccount.getBalance();
 			if (d <= currentBalance) {
 				selectedAccount.setBalance(selectedAccount.getBalance() - d);
@@ -63,9 +60,7 @@ public class AccountService {
 				AnimationUtility.typingByWord("  What else can we help you with?", 42, 0);
 
 				TimeUnit.MILLISECONDS.sleep(400 * AnimationUtility.animationToggle);
-//				AccountHome.mainMenu();
 			} else {
-//				AnimationUtility.typingCustomSplitter("      ~~ @IN@SUF@FIC@IANT@ FUNDS@ ~~", 200, 50);
 				throw new BalanceLimitException();
 
 			}
@@ -82,21 +77,13 @@ public class AccountService {
 			// Logger indicates successful transaction, message prints in purple
 			System.out.print(MiscUtil.successColor);
 			MiscUtil.indent();
-//			Transaction transaction = new Transaction(0, selectedAccount.getId(), "PZero Bank", "Online Deposit", "07/03/2019", d);
 			MiscUtil.logger.trace("deposited $" + d + " into account " + selectedAccount.getId() + '\n');
 			TransactionDAOImplAJDBC.onlineTransaction(selectedAccount.getId(), "PZero Bank", "Online Deposit", d);
-//			System.out.println("INSERT INTO transactions VALUES (DEFAULT, " + selectedAccount.getId()+", 'PZero Bank', 'Online Deposit', (current_timestamp), "+d + ");");
 			System.out.print(MiscUtil.RESET);
-//		AnimationUtility.typingByWord("  DEPOSIT SUCCESSFUL", 65, 0);
 			System.out.println();
 
 			AnimationUtility.typingByWord("  What else can we help you with?", 42, 0);
-//		System.out.println("     What else can we help you with?" + '\n');	
 			TimeUnit.MILLISECONDS.sleep(400 * AnimationUtility.animationToggle);
-//		AccountHome.mainMenu();
-
-//		double currentBalance = selectedAccount.getBalance();
-
 		}
 	}
 
@@ -111,16 +98,11 @@ public class AccountService {
 		} else {
 			selectedAccount.setAnimationPref(true);
 			MiscUtil.indent(8);
-//			System.out.println("ANIMATIONS ACTIVATED");
 			AnimationUtility.typingByLetter(MiscUtil.successColor + "ANIMATIONS ACTIVATED" + MiscUtil.RESET, 50, 2);
 			AnimationUtility.animationToggle = 1;
 			System.out.println('\n');
 		}
 		accountDAO.updateAccount(selectedAccount);
 	}
-
-//	public void changeSelectedAccount(String userName) {
-//		AccountDAO.updateAccount(AccountDAOImplAJDBC.getAccount(userName));
-//	}
 
 }

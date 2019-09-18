@@ -19,9 +19,10 @@ public class MiscUtil {
 //	public final static String ROWS = "\033[0;106m";	//Bright cyan BG
 	public final static String ROWS = "\033[0;100m"; // Grey BG
 
+	//DecimalFormat didn't quite suffice
+	//	so I created the aptly named df2
 	public static DecimalFormat df = new DecimalFormat("#,###.##");
 	
-
 	// my own formatting solution, this got a little convoluted
 	// adds zeros and dollar signs
 	public static String df2(double d, int i) {
@@ -77,9 +78,7 @@ public class MiscUtil {
 		return str;	
 	}
 
-
-
-
+	//For consistent indentations
 	public static void indent(int size) {
 		for (int i = 0; i < size; i++) {
 			System.out.print(" ");

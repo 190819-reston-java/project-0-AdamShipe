@@ -21,24 +21,20 @@ public class LoginScreen {
 	public static void blankLogin() throws InterruptedException {
 
 		// Greet
-		AnimationUtility.typingByLetter('\n' + "  WELCOME TO PZER0 BANKING" + '\n', 30, 4);
+		AnimationUtility.typingByLetter('\n' + "  WELCOME TO PZER0 BANKING" + '\n', 70, 0);
 		System.out.println();
 		try {
 			TimeUnit.MILLISECONDS.sleep(400*AnimationUtility.animationToggle);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		System.out.println("To get started, first we need your login information");
 
 		enterUserName();
 	}
 
 	static void enterUserName() throws InterruptedException {
 		
-//		System.out.println("To get started, enter your username and hit enter:");
 		AnimationUtility.typingByWord("  To get started, enter your username and hit enter:", 50, 10);
-//		System.out.print("Username: ");
 		
 		System.out.print("    " + MiscUtil.inputColor);
 		String userInput = sc.nextLine();
@@ -78,8 +74,6 @@ public class LoginScreen {
 		} else {
 			System.out.println("Incorrect password");
 			
-//			AccountService.logger.debug("unsuccessful login attempt on account " + AccountService.selectedAccount.getId());
-
 			//tick the attempt counter up
 			attempts+=1;
 			if(attempts < 5) {

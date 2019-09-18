@@ -10,8 +10,6 @@ public interface AccountDAO {
 	
 	Account getAccount(String userName);
 	
-//	Account getAccount(String email);
-	
 	boolean newAccount(Account a);
 	
 	boolean updateAccount(Account a);

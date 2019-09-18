@@ -46,37 +46,8 @@ public class TransactionDAOImplAJDBC implements TransactionDAO {
 		return transactions;
 	}
 
-//	@Override
-//	public List<Transaction> getTransactions() {
-//		Statement statement = null;
-//		ResultSet resultSet = null;
-//		Connection conn = null;
-//
-//		List<Transaction> transactions = new ArrayList<Transaction>();
-//
-//		try {
-//			conn = ConnectionUtility.getConnection();
-//
-//			statement = conn.createStatement();
-//
-//			resultSet = statement.executeQuery("SELECT * FROM transactions WHERE account_id="+AccountService.selectedAccount.getId()+";");
-//
-//			while (resultSet.next()) {
-//				transactions.add(createTransactionFromRS(resultSet));
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			StreamCloser.close(resultSet);
-//			StreamCloser.close(statement);
-//			StreamCloser.close(conn);
-//		} 
-//		return transactions;
-//	}
-
 	@Override
 	public boolean newTransaction(Transaction t) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -112,57 +83,4 @@ public class TransactionDAOImplAJDBC implements TransactionDAO {
 		return false;
 	}
 	
-//	public static boolean rGTransaction(int ua, String sd, String dd, String ts, double d) {
-//		Connection conn = null;
-//		PreparedStatement stmt = null;
-//
-//		String query = "INSERT INTO transactions VALUES (DEFAULT, ?, ?, ?, (current_timestamp), ?);";
-//
-//		try {
-//			conn = ConnectionUtility.getConnection();
-//			stmt = conn.prepareStatement(query);
-//			stmt.setInt(1, ua);
-//			stmt.setString(2, sd);
-//			stmt.setString(3, dd);
-////			stmt.setString(4, t.getDateTime());
-//			stmt.setDouble(4, d);
-//			stmt.execute();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return false;
-//		} finally {
-//			StreamCloser.close(stmt);
-//			StreamCloser.close(conn);
-//		}
-//
-//		return false;
-//	}
-	
-
-//	public static boolean generateTransaction(Transaction t) {
-//		Connection conn = null;
-//		PreparedStatement stmt = null;
-//		
-//		String query = "INSERT INTO transactions VALUES (DEFAULT, ?, ?, ?, (current_timestamp), ?);";
-//		
-//		try {
-//			conn = ConnectionUtility.getConnection();
-//			stmt = conn.prepareStatement(query);
-//			stmt.setInt(1,  t.getId());
-//			stmt.setString(2, t.getShortDesc());
-//			stmt.setString(3, t.getDetailDesc());
-////			stmt.setString(4, t.getDateTime());
-//			stmt.setDouble(4, t.getValue());
-//			stmt.execute();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return false;
-//		} finally {
-//			StreamCloser.close(stmt);
-//			StreamCloser.close(conn);
-//		}
-//		
-//		return false;
-//	}
-
 }

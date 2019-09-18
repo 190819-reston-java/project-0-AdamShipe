@@ -12,8 +12,6 @@ import com.revature.utilities.StreamCloser;
 
 public class AccountDAOImplAJDBC implements AccountDAO {
 
-//	Account ghj = new Account(0, "BobbyS", "12345", "Robert", "Smith", "bobert@yahoo.com", "01/01/1980", 1000);
-
 	@Override
 	public Account getAccount(int id) {
 		Account account = null;
@@ -33,7 +31,6 @@ public class AccountDAOImplAJDBC implements AccountDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return account;
 	}
 
@@ -102,13 +99,11 @@ public class AccountDAOImplAJDBC implements AccountDAO {
 
 	@Override
 	public boolean deleteAccount(Account a) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public List<Account> getAccounts() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

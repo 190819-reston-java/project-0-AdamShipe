@@ -20,9 +20,6 @@ import com.revature.service.TransactionService;
 public class AccountHome {
 
 	public static Scanner sc = new Scanner(System.in);
-	static DecimalFormat as = new DecimalFormat("#,###.##");
-//	private static TransactionService transactionService = new TransactionService();
-//	private static AccountService accountService = new AccountService();
 
 	public static void accountWelcome() throws InterruptedException {
 		System.out.print('\n' + "          ");
@@ -125,16 +122,15 @@ public class AccountHome {
 		MiscUtil.indent(8);
 		AnimationUtility.typingByLetter("~~TRANSACTION HISTORY~~" + '\n', 65, 5);
 		System.out.println();
-		System.out.println(" Date:        Description:                                  Amount:");
+		System.out.println("  Date:        Description:                                  Amount:");
 		
 		for (int i = 0; i < TransactionService.getTransactions().size(); i++) {
 			if (i % 2 == 0) {
 				System.out.print(MiscUtil.ROWS + MiscUtil.WHITE_TEXT);
 			}
-			System.out.println(" " + TransactionService.getTransactions().get(i).getDateTime().substring(0, 10) + "   "
+			System.out.println("  " + TransactionService.getTransactions().get(i).getDateTime().substring(0, 10) + "   "
 					+ MiscUtil.fixLength((TransactionService.getTransactions().get(i).getShortDesc()
-							+ " " + TransactionService.getTransactions().get(i).getDetailDesc()).toUpperCase(), 40)
-					+ "  "
+							+ " " + TransactionService.getTransactions().get(i).getDetailDesc()).toUpperCase(), 42)
 					+ MiscUtil.frontPadding(MiscUtil.df2(Double.valueOf(MiscUtil
 							.fixLength(Double.toString(TransactionService.getTransactions().get(i).getValue()), 10))), ' ', 10)
 					+ "  " + MiscUtil.RESET);
@@ -206,7 +202,7 @@ public class AccountHome {
 		MiscUtil.indent();
 		AnimationUtility.typingByLetter("ACCOUNT SUMMARY", 32, 0);
 		System.out.println('\n' + "  __________________________");
-		System.out.println("  Current Balance: $" + MiscUtil.df2(AccountService.selectedAccount.getBalance()));
+		System.out.println("  Current Balance: " + MiscUtil.df2(AccountService.selectedAccount.getBalance()));
 		System.out.println('\n');
 		try {
 			// no global animation timer input because ACCOUNT BALANCE looks very jarring
@@ -244,7 +240,7 @@ public class AccountHome {
 			} catch (NegativeTransactionException e) {
 				MiscUtil.indent(4);
 				AnimationUtility.typingByWord(
-						MiscUtil.WARNING + "YOU MUST ENTER A POSITIVE AMOUNT TO WITHDRAW" + '\n' + MiscUtil.RESET, 90, 10);
+						MiscUtil.WARNING + "  YOU MUST ENTER A POSITIVE AMOUNT TO WITHDRAW" + '\n' + MiscUtil.RESET, 90, 10);
 //				System.out.println(MiscUtil.WARNING + "The withdrawal amount must be positive." + MiscUtil.RESET);
 				withdraw();
 				e.printStackTrace();
@@ -300,21 +296,24 @@ public class AccountHome {
 		default:
 			try {
 				AccountService.withdrawTransaction(Double.parseDouble(userInput));
+				AccountHome.mainMenu();
 				break;
 			} catch (NegativeTransactionException e) {
 				MiscUtil.indent(4);
 				AnimationUtility.typingByWord(MiscUtil.WARNING + '\n' + 
 						"YOU MUST ENTER A POSITIVE AMOUNT TO WITHDRAW." + '\n' + MiscUtil.RESET, 90, 10);
 //				e.printStackTrace();
-				deposit();
+				withdraw();
 			} catch (BalanceLimitException e) {
 				MiscUtil.indent(4);
 				AnimationUtility.typingCustomSplitter(
 						MiscUtil.WARNING + "~~ @IN@SUF@FIC@IANT@ FUNDS@ ~~" + MiscUtil.RESET, 200, 50);
 				withdraw();
 			} catch (NumberFormatException e) {
+				MiscUtil.indent(8);
+				AnimationUtility.typingByLetter(MiscUtil.WARNING + "Invalid Entry" +'\n' + MiscUtil.RESET, 100, 20);
 				withdraw();
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 			AccountHome.mainMenu();
 			break;
@@ -378,6 +377,11 @@ public class AccountHome {
 						"YOU MUST ENTER A POSITIVE AMOUNT TO DEPOSIT." + '\n' + MiscUtil.RESET, 90, 10);
 //				e.printStackTrace();
 				deposit();
+			} catch (NumberFormatException e) {
+				MiscUtil.indent(8);
+				AnimationUtility.typingByLetter(MiscUtil.WARNING + "Invalid Entry" +'\n' + MiscUtil.RESET, 100, 20);
+				deposit();
+//				e.printStackTrace();
 			}
 			break;
 		}

@@ -21,8 +21,6 @@ public class ConnectionUtility {
 			String url = props.getProperty("url");
 			String username = props.getProperty("username");
 			String password = props.getProperty("password");
-
-//			System.out.println();
 			
 			conn = DriverManager.getConnection(url, username, password);
 			
